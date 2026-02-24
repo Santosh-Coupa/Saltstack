@@ -1,7 +1,7 @@
 variable "location" { default = "South India" }
 variable "resource_group_name" { default = "rg-salt-lab" }
 variable "admin_username" { default = "azureuser" }
-variable "vm_size" { default = "Standard_B2ts_v2" }
+variable "vm_size" { default = "Standard_B1ls" }
 variable "minion_count" { default = 2 }
 
 variable "ssh_public_key" {
