@@ -34,7 +34,7 @@ resource "azurerm_linux_virtual_machine" "master" {
 
 
   admin_ssh_key {
-    username   = "santoshjadhav"
+    username   = "azureuser"
     public_key = var.ssh_public_key
   }
 
@@ -79,7 +79,7 @@ resource "azurerm_linux_virtual_machine" "minion" {
 
 
   admin_ssh_key {
-    username   = "santoshjadhav"
+    username   = "azureuser"
     public_key = var.ssh_public_key
   }
 
