@@ -33,5 +33,5 @@ jobs:
         working-directory: ./terraform
 
       - name: Terraform Apply or Destroy
-        run: terraform ${{ github.event.inputs.action }} -auto-approve
+        run: terraform ${{ github.event.inputs.action }} -auto-approve -var="ssh_public_key=${{ secrets.SSH_PUBLIC_KEY }}"
         working-directory: ./terraform

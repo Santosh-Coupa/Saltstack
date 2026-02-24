@@ -26,9 +26,15 @@ resource "azurerm_linux_virtual_machine" "master" {
   admin_username      = var.admin_username
   network_interface_ids = [azurerm_network_interface.master_nic.id]
 
+  os_disk {
+    caching              = "ReadWrite"
+    storage_account_type = "Standard_LRS"
+  }
+
+
   admin_ssh_key {
-    username   = var.admin_username
-    public_key = file("~/.ssh/id_rsa.pub")
+    username   = "santoshjadhav"
+    public_key = var.ssh_public_key
   }
 
   custom_data = base64encode(file("${path.module}/../scripts/bootstrap-master.sh"))
@@ -65,9 +71,15 @@ resource "azurerm_linux_virtual_machine" "minion" {
     azurerm_network_interface.minion_nic[count.index].id
   ]
 
+  os_disk {
+    caching              = "ReadWrite"
+    storage_account_type = "Standard_LRS"
+  }
+
+
   admin_ssh_key {
-    username   = var.admin_username
-    public_key = file("~/.ssh/id_rsa.pub")
+    username   = "santoshjadhav"
+    public_key = var.ssh_public_key
   }
 
   custom_data = base64encode(templatefile("${path.module}/../scripts/bootstrap-minion.sh", {
