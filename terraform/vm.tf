@@ -49,7 +49,7 @@ resource "azurerm_linux_virtual_machine" "master" {
 }
 
 resource "azurerm_network_interface" "minion_nic" {
-  count               = var.minion_count
+  count               = 1
   name                = "minion-nic-${count.index}"
   location            = azurerm_resource_group.rg.location
   resource_group_name = azurerm_resource_group.rg.name
@@ -62,7 +62,7 @@ resource "azurerm_network_interface" "minion_nic" {
 }
 
 resource "azurerm_linux_virtual_machine" "minion" {
-  count               = var.minion_count
+  count               = 1
   name                = "salt-minion-${count.index}"
   resource_group_name = azurerm_resource_group.rg.name
   location            = azurerm_resource_group.rg.location
